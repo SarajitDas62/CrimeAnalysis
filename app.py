@@ -42,7 +42,13 @@ with st.sidebar:
     if data_source == "Use Default Dataset":
         if st.button("Load Default Dataset", key="load_btn"):
             with st.spinner("Loading and processing data..."):
-                csv_path = "c:/Users/saraj/Desktop/Csv file DS/Crime_Data_from_2020_to_Present.csv"
+                # Handle both local and cloud environments
+                import os
+                if os.path.exists("c:/Users/saraj/Desktop/Csv file DS/Crime_Data_from_2020_to_Present.csv"):
+                    csv_path = "c:/Users/saraj/Desktop/Csv file DS/Crime_Data_from_2020_to_Present.csv"
+                else:
+                    csv_path = "Crime_Data_from_2020_to_Present.csv"
+
                 processor = CrimeDataProcessor(csv_path)
                 processor.load_data(sample=True, n_rows=sample_size)
                 processor.clean_data()
