@@ -192,7 +192,9 @@ def create_data_source_selector():
         sample_size = st.slider("Sample size (records)", 10000, 100000, 50000, step=10000)
         return data_source, sample_size, None
     else:
-        uploaded_file = st.file_uploader("Upload CSV file", type="csv")
+        st.write("📤 **Upload your Crime Dataset CSV**")
+        st.caption("Maximum file size: 300 MB")
+        uploaded_file = st.file_uploader("Upload CSV file", type="csv", help="CSV file up to 300MB. Expected columns: DR_NO, Date Rptd, DATE OCC, TIME OCC, AREA, AREA NAME, Crm Cd Desc, LAT, LON")
         return data_source, None, uploaded_file
 
 

@@ -7,6 +7,7 @@ font = "sans serif"
 
 [client]
 showErrorDetails = true
+maxUploadSize = 300
 
 [logger]
 level = "info"
